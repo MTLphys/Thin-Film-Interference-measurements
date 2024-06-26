@@ -6,6 +6,7 @@ import numpy as np
 section for loading and setting parameters of the fitting 
 
 """
+#applying a silly thing
 
 
 nkAlq   =  np.loadtxt('nk_Alq3.txt',skiprows =0) 
