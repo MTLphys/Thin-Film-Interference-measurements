@@ -17,7 +17,7 @@ nptcdaavg =(nptcda1[:,1]+nptcda1[:,2])/2
 nptcda4=np.loadtxt('PTCDAInterpolatedn.txt',skiprows =0)
 nbk7 =  np.loadtxt('N-BK7.txt',skiprows =1)
 
-d1g = 300 #fit parameters 1 for layer thickness 
+d1g = 100 #fit parameters 1 for layer thickness 
 d2g = 000
 d3g = 0 
 
@@ -155,8 +155,8 @@ def M(d,n,wl,layers):
     Mtot = dot(Mtot,rbmat)
     return 1/tij(n[layers[len(layers)-2]],n[layers[len(layers)-1]])*Mtot
 
-layers = [0,2, 2, 3]     #the material type of each sequential layer
-d =      [0,d1g,d1g,  0] #the thickness of each layer, start and end layers set to 0 as no transfer matrix is applied
+layers = [3 , 2 , 0]     #the material type of each sequential layer
+d =      [0 ,d1g,  0] #the thickness of each layer, start and end layers set to 0 as no transfer matrix is applied
 n =      [n0,n1, n2, n3] #air,ptcda,alq3,glass
 
 #print(M(d,n,wl,layers))
@@ -176,8 +176,8 @@ fig, ax = plt.subplots()
 #ax.plot(wl,np.abs(Mfa[1,0,:]/Mfa[0,0,:])**2)
 #ax.plot(wl,np.abs(1/Mfa[0,0,:])**2)
 
-ax.plot(wl,np.abs(Mfb[1,0,:]/Mfb[0,0,:])**2/.041,label ="Reflectance" )
-ax.plot(wl,np.abs(1/Mfb[0,0,:])**2/.64, label ="Transmittance" )
+ax.plot(wl,np.abs(Mfb[1,0,:]/Mfb[0,0,:])**2,label ="Reflectance" )
+ax.plot(wl,np.abs(1/Mfb[0,0,:])**2/1.5, label ="Transmittance" )
 
 
 #ax.plot(wl,np.abs(r34))
